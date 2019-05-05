@@ -27,10 +27,10 @@ app.use(session({
   })
 );
 
-//middleware which parses incoming requests with urlencoded payloads
+//Middleware for parsing incoming requests with urlencoded payloads
 app.use(express.urlencoded({extended: false }));
 
-//
+//Landing Page
 app.get('/', (req, res)=>{
   var html = fs.readFileSync('./timer.html', 'utf8');
   res.send(html);
@@ -38,11 +38,12 @@ app.get('/', (req, res)=>{
 
 app.post('/', (req, res)=>{
   if(req.body.clearform){
-    //the persistent storage is cleared
+    //The user presses 'CLEAR', causing the persistent storage to be erased, and client's browser to be redirected to the landing page.
     req.session.destroy();
     res.redirect('/');
   }
   else{
+    //The user presses 'STOP/RESET'.
     seconds=("0"+(req.body.hiddenTime)%60).slice(-2);
     minutes=("0"+parseInt((req.body.hiddenTime)/60)).slice(-2);
     hours=("0"+parseInt((req.body.hiddenTime)/360)).slice(-2);
@@ -51,7 +52,6 @@ app.post('/', (req, res)=>{
     }
     req.session.store+="<p>"+hours+":"+minutes+":"+seconds+"</p>"
     var html = fs.readFileSync('./timer.html', 'utf8');
-    //console.log(typeof(html));
     html=html.replace("<!--Add_Stopped_Times_Here-->", req.session.store)
     res.send(html);
   }
