@@ -21,6 +21,8 @@ Finally, while it is possible to rewrite timer.html in another template engine,
 such as Pug or Mustache, it is unnecessary to do so, since
 'fs.readFileSync('./timer.html', 'utf8')' produces a string that can be readily
 edited using Javascript string commands.
+
+All areas with //... need to be completed.
 */
 
 var express = require('express');
@@ -33,39 +35,40 @@ var fs = require('fs');
 
 
 //Middleware for parsing incoming requests with urlencoded payloads
-app.use(express.urlencoded({extended: false }));
+app.use(express.urlencoded({ extended: false }));
 
 //Landing page
-app.get('/', (req, res)=>{
+app.get('/', (req, res) => {
   var html = fs.readFileSync('./timer.html', 'utf8');
   res.send(html);
 });
 
 //Page after submission of form data
-app.post('/', (req, res)=>{
-  if(req.body.clearform){
-    //The user presses 'CLEAR', causing the persistent storage to be erased, and
-    //client's browser to be redirected to the landing page.
+app.post('/', (req, res) => {
+  if (req.body.clearform) {
+    //The user presses 'CLEAR', causing the persistent storage to be erased.  //Clear the persistent storage on the client's browser, and redirected the //client to the landing page.
     //...
 
 
   }
-  else{
-    //The user presses 'STOP/RESET'.  The time is persistently stored for each
-    //client and displayed in the html.
-    seconds=("0"+(req.body.hiddenTime)%60).slice(-2);
-    minutes=("0"+parseInt((req.body.hiddenTime)/60)).slice(-2);
-    hours=("0"+parseInt((req.body.hiddenTime)/360)).slice(-2);
+  else {
+    //The user presses 'STOP/RESET'.
+    seconds = ("0" + (req.body.hiddenTime) % 60).slice(-2);
+    minutes = ("0" + parseInt((req.body.hiddenTime) / 60)).slice(-2);
+    hours = ("0" + parseInt((req.body.hiddenTime) / 3600)).slice(-2);
+    //Store the seconds, minutes, and hours in a persistent data store.
     //...
 
 
+    //Now retrieve the list of times from the persistent data store and display //on the webpage.
+    //...
 
 
 
   }
 });
 
-app.listen(3000, (err)=>{
-  if(err) throw err;
+app.listen(3000, (err) => {
+  if (err) throw err;
   console.log('listening on port 3000');
 });

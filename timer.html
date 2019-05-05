@@ -24,7 +24,7 @@
     ++timeInSeconds;
     seconds.innerHTML=("0"+timeInSeconds%60).slice(-2);
     minutes.innerHTML=("0"+parseInt(timeInSeconds/60)).slice(-2);
-    hours.innerHTML=("0"+parseInt(timeInSeconds/360)).slice(-2);
+    hours.innerHTML=("0"+parseInt(timeInSeconds/3600)).slice(-2);
   }
   
   function AddPostData(){

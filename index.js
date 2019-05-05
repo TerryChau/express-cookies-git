@@ -58,7 +58,7 @@ app.post('/', (req, res)=>{
     //client and displayed in the html.
     seconds=("0"+(req.body.hiddenTime)%60).slice(-2);
     minutes=("0"+parseInt((req.body.hiddenTime)/60)).slice(-2);
-    hours=("0"+parseInt((req.body.hiddenTime)/360)).slice(-2);
+    hours=("0"+parseInt((req.body.hiddenTime)/3600)).slice(-2);
     if(!req.session.store){
       req.session.store="";
     }
