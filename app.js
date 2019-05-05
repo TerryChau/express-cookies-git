@@ -28,7 +28,7 @@ app.use(session({
 app.use(express.urlencoded({extended: false }));
 
 app.get('/', (req, res)=>{
-  var html = fs.readFileSync('./log.html', 'utf8');
+  var html = fs.readFileSync('./timer.html', 'utf8');
   console.log(req.body.hiddenTime);
   res.send(html);
 });
@@ -51,7 +51,7 @@ app.post('/', (req, res)=>{
   }
   req.session.store+="<p>"+hours+":"+minutes+":"+seconds+"</p>"
   //req.session.store
-  var html = fs.readFileSync('./log.html', 'utf8');
+  var html = fs.readFileSync('./timer.html', 'utf8');
   console.log(typeof(html));
   //html=html.replace("<!--Add_Time_Here-->", "<p>cat</p>")
   html=html.replace("<!--Add_Stopped_Times_Here-->", req.session.store)

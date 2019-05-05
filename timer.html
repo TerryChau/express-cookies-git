@@ -1,9 +1,6 @@
 <html>
-  <h1>Enter Log Entry:</h1>
-  <textarea rows="4" cols="50" name="logEntry" form="usrform"></textarea>
-  <br>
+  <h1><div style="display: inline-block;" id="hours">00</div>:<div style="display: inline-block;" id="minutes">00</div>:<div style="display: inline-block;" id="seconds">00</div></h1>
   <form method='post' action='/' id="usrform" onsubmit="AddPostData();">
-    <input type="number" name="usrname">
     <input type="hidden" id="hiddenTimeID" name="hiddenTime" value="">
     <input type="submit" value='STOP'>
   </form>
@@ -12,7 +9,6 @@
     <input type="submit" value='CLEAR'>
   </form>
 
-  <h1><div style="display: inline-block;" id="hours">00</div>:<div style="display: inline-block;" id="minutes">00</div>:<div style="display: inline-block;" id="seconds">00</div></h1>
   
   <!--Add_Stopped_Times_Here-->
   
