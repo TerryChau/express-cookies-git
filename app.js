@@ -2,7 +2,9 @@
 This goal of this exercise is to persist the time at which the stop watch is stopped.  Each stopped time should be listed on a separate line underneath the timer.  For example:
 
 00:00:07
-
+00:00:10
+00:02:05
+00:00:06
 
 Since more than one user may be using this application at once, it is not sufficient to store the list of stopped times in a single array.  Different users would have a different list of stopped times.  Use cookies and sessions to persist the stopped times for difference users.
 
