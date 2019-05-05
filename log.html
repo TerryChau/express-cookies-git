@@ -1,0 +1,38 @@
+<html>
+  <h1>Enter Log Entry:</h1>
+  <textarea rows="4" cols="50" name="logEntry" form="usrform"></textarea>
+  <br>
+  <form method='post' action='/' id="usrform" onsubmit="AddPostData();">
+    <input type="number" name="usrname">
+    <input type="hidden" id="hiddenTimeID" name="hiddenTime" value="">
+    <input type="submit" value='STOP'>
+  </form>
+  <form method='post' action='/'>
+    <input type="hidden" name="clearform" value="1">
+    <input type="submit" value='CLEAR'>
+  </form>
+
+  <h1><div style="display: inline-block;" id="hours">00</div>:<div style="display: inline-block;" id="minutes">00</div>:<div style="display: inline-block;" id="seconds">00</div></h1>
+  
+  <!--Add_Stopped_Times_Here-->
+  
+  <script>
+  var hours=document.getElementById("hours");
+  var minutes=document.getElementById("minutes");
+  var seconds=document.getElementById("seconds");
+  var timeInSeconds=0;
+  
+  setInterval(addSecond, 1000);
+  
+  function addSecond() {
+    ++timeInSeconds;
+    seconds.innerHTML=("0"+timeInSeconds%60).slice(-2);
+    minutes.innerHTML=("0"+parseInt(timeInSeconds/60)).slice(-2);
+    hours.innerHTML=("0"+parseInt(timeInSeconds/360)).slice(-2);
+  }
+  
+  function AddPostData(){
+    document.getElementById("hiddenTimeID").value=timeInSeconds;
+  }
+  </script>
+</html>
